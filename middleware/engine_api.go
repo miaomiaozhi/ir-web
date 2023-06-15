@@ -38,6 +38,8 @@ func readFile(conf *conf.IrConfig, engine *Engine) {
 	dataPath := conf.MustGetString("data.path")
 	mlog.Info("data path is", dataPath)
 	mlog.Info("reading data files")
+
+	cnt := 0
 	if err := filepath.Walk(dataPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -53,10 +55,23 @@ func readFile(conf *conf.IrConfig, engine *Engine) {
 			return err
 		}
 		doc := prepross(string(content))
-		engine.Documents = append(engine.Documents, doc)
-		url, title, _ := pkg.SplitDocument(doc)
+		if doc == "" {
+			return nil
+		}
 
-		mlog.Info("url, title", url, title)
+		engine.Documents = append(engine.Documents, doc)
+		url, title, body := pkg.SplitDocument(doc)
+
+		if url == "" || title == "" || body == "" {
+			return nil
+		}
+
+		if cnt < 10 {
+			mlog.Info("url, title", url, title)
+		} else if cnt == 10 {
+			mlog.Info("log only 10 pages")
+		}
+		cnt += 1
 		engine.Urls = append(engine.Urls, url)
 		engine.Title = append(engine.Title, title)
 
