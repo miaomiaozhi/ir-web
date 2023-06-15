@@ -33,3 +33,25 @@ func GetMinimalEditDistance(a, b string) int {
 	}
 	return f[n][m]
 }
+
+func GetDF(ids []int) int {
+	res := 0
+	used := make(map[int]bool, len(ids))
+	for _, id := range ids {
+		if _, has := used[id]; !has {
+			res += 1
+			used[id] = true
+		}
+	}
+	return res
+}
+
+func GetTF(need int, ids []int) int {
+	cnt := 0
+	for _, id := range ids {
+		if id == need {
+			cnt++
+		}
+	}
+	return cnt
+}
