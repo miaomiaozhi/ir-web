@@ -1,0 +1,7 @@
+{   
+    "debug": false,
+    "web": {
+        "port": 8080,
+        "host": "localhost"
+    }
+}
