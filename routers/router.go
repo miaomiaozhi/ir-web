@@ -17,8 +17,8 @@ func (IrisRouter) InitApp(app *iris.Application) {
 		// 注册健康检查路由
 		v1.RegisterHealthRouter(appRouter)
 
-		// 注册query路由
-		// v1.RegisterUserRouter(appRouter)
+		// 注册引擎路由
+		v1.RegisterEngineRouter(appRouter)
 	}
 	mlog.Info("init app router success")
 }
