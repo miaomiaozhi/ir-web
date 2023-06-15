@@ -77,7 +77,7 @@ func GetJieba() *gojieba.Jieba {
 	return jieba
 }
 
-func SplitWorkByLanguage(token string) ([]string, []string) {
+func SplitWorkByLanguage(token string) []string {
 	tokenList := GetJieba().CutForSearch(token, true)
 	englishStr := regexp.MustCompile(`\b\w+\b`).FindAllString(token, -1)
 	english := make([]string, 0)
@@ -91,5 +91,8 @@ func SplitWorkByLanguage(token string) ([]string, []string) {
 			chinese = append(chinese, w)
 		}
 	}
-	return chinese, english
+	terms := make([]string, 0, len(chinese)+len(english)+2)
+	terms = append(terms, chinese...)
+	terms = append(terms, english...)
+	return terms
 }

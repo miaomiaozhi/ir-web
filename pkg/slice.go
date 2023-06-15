@@ -1,20 +1,19 @@
 package pkg
 
 import (
-	"log"
 	"sort"
 )
 
 // 求两个 Slice 的并集
-func Union(a, b []interface{}) []interface{} {
-	m := make(map[interface{}]bool)
+func Union(a, b []int) []int {
+	m := make(map[int]bool)
 	for _, item := range a {
 		m[item] = true
 	}
 	for _, item := range b {
 		m[item] = true
 	}
-	result := make([]interface{}, 0)
+	result := make([]int, 0)
 	if len(a) == 0 && len(b) == 0 {
 		return result
 	}
@@ -23,26 +22,9 @@ func Union(a, b []interface{}) []interface{} {
 		result = append(result, item)
 	}
 
-	var t interface{}
-	if len(a) != 0 {
-		t = a[0]
-	}
-	if len(b) != 0 {
-		t = b[0]
-	}
-	switch t.(type) {
-	case int:
-		sort.Slice(result, func(i, j int) bool {
-			return result[i].(int) < result[j].(int)
-		})
-	case string:
-		sort.Slice(result, func(i, j int) bool {
-			return result[i].(string) < result[j].(string)
-		})
-	default:
-		log.Println("[ERROR] union unexpected type")
-		return nil
-	}
+	sort.Slice(result, func(i, j int) bool {
+		return result[i] < result[j]
+	})
 	return result
 }
 
