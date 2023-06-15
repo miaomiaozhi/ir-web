@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"regexp"
+	"strings"
 	"sync"
 
 	"github.com/kljensen/snowball"
@@ -95,4 +96,26 @@ func SplitWorkByLanguage(token string) []string {
 	terms = append(terms, chinese...)
 	terms = append(terms, english...)
 	return terms
+}
+
+// 使用正则表达拆分一个文章，分解成 超链接，标题，内容
+func SplitDocument(doc string) (string, string, string) {
+	url := regexp.MustCompile(`\[url\]:\s+(.*)`).FindStringSubmatch(doc)[1]
+	body := strings.Split(doc, "\n")
+	title := ""
+	content := ""
+	isTitle := true
+	for _, str := range body {
+		if str == "" || regexp.MustCompile(`^\s*$`).MatchString(str) || regexp.MustCompile(`\[url\]:\s+(.*)`).MatchString(str) {
+			continue
+		}
+		if isTitle {
+			title = str
+			isTitle = false
+		} else {
+			content += str + "\n"
+		}
+
+	}
+	return url, title, content
 }
