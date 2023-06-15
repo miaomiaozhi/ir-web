@@ -3,5 +3,9 @@
     "web": {
         "port": 8080,
         "host": "localhost"
+    },
+    "logger": {
+        "dirpath": "./",
+        "filename": "ir-web.log"
     }
 }
