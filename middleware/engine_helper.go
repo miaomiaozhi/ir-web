@@ -19,7 +19,7 @@ func (e *Engine) FuzzyQueryIndexListByToken(token string) []int {
 	words := make([]string, 0, len(prev))
 	words = append(words, prev...)
 
-	for term, _ := range e.VocabularySet {
+	for term := range e.VocabularySet {
 		for _, prevWord := range prev {
 			if pkg.GetMinimalEditDistance(term, prevWord) <= int(conf.GetConfig().Conf.GetInt("engine.distance", 1)) {
 				words = append(words, term)
