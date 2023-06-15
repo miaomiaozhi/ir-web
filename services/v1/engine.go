@@ -10,12 +10,14 @@ import (
 
 func Query(ctx *wrapper.Context, reqBody interface{}) error {
 	mlog.Info("handle query now")
-	req := reqBody.(v1_req.EngineRequest)
-	engine.GetEngine().QueryIndexListByToken(req.Token)
+	req := reqBody.(*v1_req.EngineRequest)
+	ids := engine.GetEngine().QueryIndexListByToken(req.Token)
 
 	resp := v1_resp.EngineResponse{
 		Title: []string{"hello"},
 	}
+	mlog.Info("token is", req.Token)
+	mlog.Info("query ids", ids)
 	wrapper.SendApiOKResponse(ctx, resp, "查询成功")
 	return nil
 }
