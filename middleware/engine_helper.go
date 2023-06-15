@@ -2,13 +2,35 @@ package middleware
 
 import (
 	"container/heap"
+	"ir-web/conf"
 	"ir-web/pkg"
 	"math"
 )
 
+// 传入查询 token 返回查找结果
 func (e *Engine) QueryIndexListByToken(token string) []int {
 	words := pkg.SplitWorkByLanguage(token)
+	return e.queryIndexListHelper(token, words)
+}
 
+// 传入查询 token 返回模糊查找结果
+func (e *Engine) FuzzyQueryIndexListByToken(token string) []int {
+	prev := pkg.SplitWorkByLanguage(token)
+	words := make([]string, 0, len(prev))
+	words = append(words, prev...)
+
+	for term, _ := range e.VocabularySet {
+		for _, prevWord := range prev {
+			if pkg.GetMinimalEditDistance(term, prevWord) <= int(conf.GetConfig().Conf.GetInt("engine.distance", 1)) {
+				words = append(words, term)
+			}
+		}
+	}
+	return e.queryIndexListHelper(token, words)
+}
+
+// 传入 words 然后返回 index 列表
+func (e *Engine) queryIndexListHelper(token string, words []string) []int {
 	list := make([]int, 0)
 	for _, word := range words {
 		if ids, has := e.PostingList[word]; has {
@@ -48,7 +70,7 @@ func (e *Engine) QueryIndexListByToken(token string) []int {
 
 func (e *Engine) GetCosineSimlarity(token string, terms []string) map[int]float64 {
 	res := make(map[int]float64)
-	tf := TF_IDF_ForQuery(token, terms)
+	tf := calc(token, terms)
 	for i := range e.Documents {
 		n1, n2 := e.TfIdfMatrix[i], tf
 		n1Value, n2Value := 0.0, 0.0
@@ -70,16 +92,13 @@ func (e *Engine) GetCosineSimlarity(token string, terms []string) map[int]float6
 	return res
 }
 
-// TODO
-func TF_IDF_ForQuery(query string, queryWords []string) map[string]float64 {
-	// 计算Query的TF-IDF
-	// query_idf := make(map[string]float64)
-	query_tf := make(map[string]float64)
+func calc(query string, queryWords []string) map[string]float64 {
+	tf := make(map[string]float64)
 	for _, word := range queryWords {
-		query_tf[word]++
+		tf[word]++
 	}
-	for index := range query_tf {
-		query_tf[index] /= float64(len(queryWords))
+	for index := range tf {
+		tf[index] /= float64(len(queryWords))
 	}
-	return query_tf
+	return tf
 }

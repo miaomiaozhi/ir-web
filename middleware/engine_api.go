@@ -68,9 +68,9 @@ func readFile(conf *conf.IrConfig, engine *Engine) {
 
 		if conf.GetString("debug", "false") == "true" {
 			if cnt < 5 {
-				mlog.Info("url, title", url, title)
+				mlog.Debug("url, title", url, title)
 			} else if cnt == 5 {
-				mlog.Info("log only 5 pages")
+				mlog.Debug("log only 5 pages")
 			}
 			cnt += 1
 		}
