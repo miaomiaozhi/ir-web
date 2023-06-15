@@ -5,8 +5,10 @@ go 1.20
 require (
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/kataras/iris/v12 v12.2.0
+	github.com/kljensen/snowball v0.8.0
 	github.com/pkg/errors v0.9.1
 	github.com/tidwall/gjson v1.14.4
+	github.com/yanyiwu/gojieba v1.3.0
 )
 
 require (
