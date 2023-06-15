@@ -3,6 +3,7 @@ package main
 import (
 	"ir-web/conf"
 	mlog "ir-web/internal/wrapper/mlog"
+	"ir-web/middleware"
 	"ir-web/runner"
 )
 
@@ -11,8 +12,9 @@ func main() {
 	if err != nil {
 		panic("init config error: " + err.Error())
 	}
-	go runner.InitBackgournTaskWithConfig(config)
-	conf.InitGlobalConfig(config)
+	middleware.InitEngineWithConfig(config)
 	mlog.InitWithConfig(config)
+	conf.InitGlobalConfig(config)
+	go runner.InitBackgournTaskWithConfig(config)
 	runner.StartWebApp(config)
 }
