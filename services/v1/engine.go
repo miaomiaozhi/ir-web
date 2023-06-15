@@ -1,31 +1,21 @@
 package v1
 
 import (
-	"ir-web/conf"
+	"ir-web/internal/wrapper"
 	mlog "ir-web/internal/wrapper/mlog"
+	engine "ir-web/middleware"
+	v1_req "ir-web/models/protoreq/v1"
+	v1_resp "ir-web/models/protoresp/v1"
 )
 
-type InvertedIndex map[string][]int
+func Query(ctx *wrapper.Context, reqBody interface{}) error {
+	mlog.Info("handle query now")
+	req := reqBody.(v1_req.EngineRequest)
+	engine.GetEngine().QueryIndexListByToken(req.Token)
 
-type Engine struct {
-	Terms                  map[int][]string
-	CosineSimilarityMatrix map[int]map[int]float64
-	VocabularySet          map[string]bool
-	PostingList            InvertedIndex
-	Documents              []string
-	TfIdfMatrix            map[int]map[string]float64
-}
-
-var engine *Engine
-
-func GetEngine() *Engine {
-	if engine == nil {
-		mlog.Error("init engine first")
-		InitEngineWithConfig(conf.GetConfig().Conf)
-		if engine == nil {
-			panic("init engine error")
-		}
-		return engine
+	resp := v1_resp.EngineResponse{
+		Title: []string{"hello"},
 	}
-	return engine
+	wrapper.SendApiOKResponse(ctx, resp, "查询成功")
+	return nil
 }
