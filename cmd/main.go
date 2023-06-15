@@ -13,4 +13,5 @@ func main() {
 	}
 	conf.InitGlobalConfig(config)
 	wrapper.InitWithConfig(config)
+	go runner.InitBackgournTaskWithConfig(config)
 }
