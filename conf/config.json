@@ -8,5 +8,8 @@
     "logger": {
         "dirpath": "./",
         "filename": "ir-web.log"
+    },
+    "data": {
+        "path": "./pages/"
     }
 }
