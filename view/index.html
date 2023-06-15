@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>搜索</title>
+    <style>
+        /* 居中显示搜索框和搜索结果 */
+        #search-box, #result {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 显示搜索框 -->
+    <div id="search-box">
+        <h1>搜索</h1>
+        <input type="text" id="keyword" placeholder="输入关键字">
+        <button onclick="search()">搜索</button>
+    </div>
+
+    <!-- 显示搜索结果 -->
+    <div id="result">
+    </div>
+
+    <!-- 显示返回首页按钮 -->
+    <div style="text-align:center;">
+        <button onclick="redirectToIndex()">返回首页</button>
+    </div>
+
+    <script>
+        function search() {
+            // 获取搜索框中的关键字
+            var token = document.getElementById("keyword").value;
+
+            // 创建一个 XMLHttpRequest 对象
+            var xhr = new XMLHttpRequest();
+
+            // 配置 POST 请求
+            xhr.open("POST", "http://localhost:8080/api/v1/query", true);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            // 设置请求完成后的回调函数
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // 解析后端返回的数据
+                    var response = JSON.parse(xhr.responseText);
+                    var titles = response.Data.Title;
+                    var urls = response.Data.Urls;
+
+                    // 构建搜索结果列表
+                    var resultDiv = document.getElementById("result");
+                    resultDiv.innerHTML = "";
+                    for (var i = 0; i < titles.length; i++) {
+                        var title = titles[i];
+                        var url = urls[i];
+                        var link = document.createElement("a");
+                        link.href = url;
+                        link.textContent = title;
+                        var p = document.createElement("p");
+                        p.appendChild(link);
+                        resultDiv.appendChild(p);
+                    }
+                }
+            };
+
+            // 发送 POST 请求
+            var request = {
+                token: token
+            };
+            xhr.send(JSON.stringify(request));
+        }
+
+        function redirectToIndex() {
+            window.location.href = "http://localhost:8080/index";
+        }
+    </script>
+</body>
+</html>
