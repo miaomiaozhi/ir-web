@@ -1,0 +1,66 @@
+[INFO][router.go:13] 2023/06/15 11:13:32 init app
+[INFO][health.go:17] 2023/06/15 11:13:32 register health router success
+[INFO][router.go:23] 2023/06/15 11:13:32 init app router success
+[INFO][web.go:28] 2023/06/15 11:13:32 app listening port: 8080
+[INFO][background.go:15] 2023/06/15 11:15:10 health url is localhost:8080/api/v1/health
+[INFO][router.go:13] 2023/06/15 11:15:10 init app
+[INFO][health.go:17] 2023/06/15 11:15:10 register health router success
+[INFO][router.go:23] 2023/06/15 11:15:10 init app router success
+[INFO][web.go:28] 2023/06/15 11:15:10 app listening port: 8080
+[ERROR][background.go:24] 2023/06/15 11:15:20 heart beat error: Get "localhost:8080/api/v1/health": unsupported protocol scheme "localhost"
+[ERROR][background.go:24] 2023/06/15 11:15:30 heart beat error: Get "localhost:8080/api/v1/health": unsupported protocol scheme "localhost"
+[INFO][background.go:15] 2023/06/15 11:16:11 health url is 127.0.0.1:8080/api/v1/health
+[INFO][router.go:13] 2023/06/15 11:16:11 init app
+[INFO][health.go:17] 2023/06/15 11:16:11 register health router success
+[INFO][router.go:23] 2023/06/15 11:16:11 init app router success
+[INFO][web.go:28] 2023/06/15 11:16:11 app listening port: 8080
+[ERROR][background.go:24] 2023/06/15 11:16:21 heart beat error: parse "127.0.0.1:8080/api/v1/health": first path segment in URL cannot contain colon
+[INFO][background.go:15] 2023/06/15 11:16:56 health url is http://127.0.0.1:8080/api/v1/health
+[INFO][router.go:13] 2023/06/15 11:16:56 init app
+[INFO][health.go:17] 2023/06/15 11:16:56 register health router success
+[INFO][router.go:23] 2023/06/15 11:16:56 init app router success
+[INFO][web.go:28] 2023/06/15 11:16:56 app listening port: 8080
+[INFO][health.go:13] 2023/06/15 11:17:06 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:06 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:06 heart beat success
+[INFO][background.go:15] 2023/06/15 11:17:11 health url is http://127.0.0.1:8080/api/v1/health
+[INFO][router.go:13] 2023/06/15 11:17:11 init app
+[INFO][health.go:17] 2023/06/15 11:17:11 register health router success
+[INFO][router.go:23] 2023/06/15 11:17:11 init app router success
+[INFO][web.go:28] 2023/06/15 11:17:11 app listening port: 8080
+[INFO][health.go:13] 2023/06/15 11:17:16 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:16 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:16 heart beat success
+[INFO][health.go:13] 2023/06/15 11:17:21 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:21 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:21 heart beat success
+[INFO][health.go:13] 2023/06/15 11:17:26 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:26 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:26 heart beat success
+[INFO][health.go:13] 2023/06/15 11:17:31 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:31 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:31 heart beat success
+[INFO][health.go:13] 2023/06/15 11:17:36 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:36 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:36 heart beat success
+[INFO][health.go:13] 2023/06/15 11:17:41 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:41 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:41 heart beat success
+[INFO][health.go:13] 2023/06/15 11:17:46 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:46 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:46 heart beat success
+[INFO][health.go:13] 2023/06/15 11:17:51 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:51 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:51 heart beat success
+[INFO][health.go:13] 2023/06/15 11:17:56 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:17:56 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:17:56 heart beat success
+[INFO][health.go:13] 2023/06/15 11:18:01 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:18:01 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:18:01 heart beat success
+[INFO][health.go:13] 2023/06/15 11:18:06 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:18:06 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:18:06 heart beat success
+[INFO][health.go:13] 2023/06/15 11:18:11 health controller wrapper HeartBeat
+[INFO][health.go:10] 2023/06/15 11:18:11 Apiwrapper ok
+[INFO][background.go:27] 2023/06/15 11:18:11 heart beat success

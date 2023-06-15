@@ -10,10 +10,11 @@ import (
 
 func InitBackgournTaskWithConfig(conf *conf.IrConfig) {
 	// 指定 Health URL
-	healthURL := conf.GetString("web.host", "localhost") + ":" + strconv.FormatInt(conf.GetInt("web.port", 8080), 10) + "/health"
+	healthURL := "http://" + conf.GetString("web.host", "127.0.0.1") +
+		":" + strconv.FormatInt(conf.GetInt("web.port", 8080), 10) + "/api/v1/health"
 	mlog.Info("health url is", healthURL)
 
-	// 每隔 10s 发送心跳请求
+	// 每隔 5s 发送心跳请求
 	ticker := time.NewTicker(time.Second * time.Duration(conf.GetInt("web.heartbeat", 10)))
 	defer ticker.Stop()
 

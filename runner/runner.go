@@ -2,6 +2,7 @@ package runner
 
 import (
 	conf "ir-web/conf"
+	"ir-web/web"
 )
 
 type Runner struct {
@@ -14,7 +15,7 @@ func New(conf *conf.IrConfig) *Runner {
 	}
 }
 
-// // 启动 app
-// func (r *Runner) StartWebApp() {
-// 	web.New().Run(r.Conf)
-// }
+// 启动 app
+func StartWebApp(conf *conf.IrConfig) {
+	web.New().Run(conf)
+}
