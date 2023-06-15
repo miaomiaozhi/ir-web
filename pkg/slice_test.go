@@ -86,6 +86,13 @@ func TestUnion(t *testing.T) {
 			},
 			want: []interface{}{string("aaa"), "abc", "abcd"},
 		},
+		{
+			args: args{
+				a: []interface{}{float32(0.0)},
+				b: []interface{}{float32(0.0)},
+			},
+			want: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

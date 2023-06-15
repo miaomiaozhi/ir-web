@@ -1,6 +1,9 @@
 package pkg
 
-import "sort"
+import (
+	"log"
+	"sort"
+)
 
 // 求两个 Slice 的并集
 func Union(a, b []interface{}) []interface{} {
@@ -36,6 +39,9 @@ func Union(a, b []interface{}) []interface{} {
 		sort.Slice(result, func(i, j int) bool {
 			return result[i].(string) < result[j].(string)
 		})
+	default:
+		log.Println("[ERROR] union unexpected type")
+		return nil
 	}
 	return result
 }
