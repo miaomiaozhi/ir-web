@@ -1,5 +1,13 @@
 package pkg
 
+import (
+	"regexp"
+	"sync"
+
+	"github.com/kljensen/snowball"
+	"github.com/yanyiwu/gojieba"
+)
+
 const (
 	inf = 0x3f3f3f3f
 )
@@ -54,4 +62,34 @@ func GetTF(need int, ids []int) int {
 		}
 	}
 	return cnt
+}
+
+var (
+	jieba     *gojieba.Jieba
+	jiebaOnce sync.Once
+)
+
+// 只在第一次调用时执行初始化
+func GetJieba() *gojieba.Jieba {
+	jiebaOnce.Do(func() {
+		jieba = gojieba.NewJieba()
+	})
+	return jieba
+}
+
+func SplitWorkByLanguage(token string) ([]string, []string) {
+	tokenList := GetJieba().CutForSearch(token, true)
+	englishStr := regexp.MustCompile(`\b\w+\b`).FindAllString(token, -1)
+	english := make([]string, 0)
+	chinese := make([]string, 0)
+	for _, w := range englishStr {
+		w, _ = snowball.Stem(w, "english", true)
+		english = append(english, w)
+	}
+	for _, w := range tokenList {
+		if regexp.MustCompile(`^[\p{Han}]+$`).MatchString(w) {
+			chinese = append(chinese, w)
+		}
+	}
+	return chinese, english
 }
