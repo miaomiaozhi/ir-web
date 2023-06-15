@@ -66,12 +66,15 @@ func readFile(conf *conf.IrConfig, engine *Engine) {
 			return nil
 		}
 
-		if cnt < 10 {
-			mlog.Info("url, title", url, title)
-		} else if cnt == 10 {
-			mlog.Info("log only 10 pages")
+		if conf.GetString("debug", "false") == "true" {
+			if cnt < 5 {
+				mlog.Info("url, title", url, title)
+			} else if cnt == 5 {
+				mlog.Info("log only 5 pages")
+			}
+			cnt += 1
 		}
-		cnt += 1
+
 		engine.Urls = append(engine.Urls, url)
 		engine.Title = append(engine.Title, title)
 
