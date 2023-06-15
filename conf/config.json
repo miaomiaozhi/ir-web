@@ -9,6 +9,9 @@
         "dirpath": "./",
         "filename": "ir-web.log"
     },
+    "engine": {
+        "distance": 2
+    },
     "data": {
         "path": "./pages/"
     }
