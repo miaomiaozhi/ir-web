@@ -8,12 +8,13 @@ import (
 type InvertedIndex map[string][]int
 
 type Engine struct {
-	Terms                  map[int][]string
-	CosineSimilarityMatrix map[int]map[int]float64
-	VocabularySet          map[string]bool
-	PostingList            InvertedIndex
-	Documents              []string
-	TfIdfMatrix            map[int]map[string]float64
+	Terms         map[int][]string
+	Title         []string
+	Urls          []string
+	VocabularySet map[string]bool
+	PostingList   InvertedIndex
+	Documents     []string
+	TfIdfMatrix   map[int]map[string]float64
 }
 
 var engine *Engine

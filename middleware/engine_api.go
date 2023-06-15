@@ -15,16 +15,19 @@ import (
 
 func InitEngineWithConfig(conf *conf.IrConfig) {
 	engine = &Engine{
-		Terms:                  make(map[int][]string),
-		CosineSimilarityMatrix: make(map[int]map[int]float64),
-		VocabularySet:          make(map[string]bool),
-		PostingList:            make(InvertedIndex),
-		Documents:              make([]string, 0),
-		TfIdfMatrix:            make(map[int]map[string]float64),
+		Terms:         make(map[int][]string),
+		Title:         make([]string, 0),
+		Urls:          make([]string, 0),
+		VocabularySet: make(map[string]bool),
+		PostingList:   make(InvertedIndex),
+		Documents:     make([]string, 0),
+		TfIdfMatrix:   make(map[int]map[string]float64),
 	}
 	readFile(conf, engine)
 	build(conf, engine)
 	calcTF_IDF(conf, engine)
+
+	mlog.Info("init engine with config success")
 }
 
 func prepross(doc string) string {
@@ -34,6 +37,7 @@ func prepross(doc string) string {
 func readFile(conf *conf.IrConfig, engine *Engine) {
 	dataPath := conf.MustGetString("data.path")
 	mlog.Info("data path is", dataPath)
+	mlog.Info("reading data files")
 	if err := filepath.Walk(dataPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
@@ -48,7 +52,14 @@ func readFile(conf *conf.IrConfig, engine *Engine) {
 		if err != nil {
 			return err
 		}
-		engine.Documents = append(engine.Documents, prepross(string(content)))
+		doc := prepross(string(content))
+		engine.Documents = append(engine.Documents, doc)
+		url, title, _ := pkg.SplitDocument(doc)
+
+		mlog.Info("url, title", url, title)
+		engine.Urls = append(engine.Urls, url)
+		engine.Title = append(engine.Title, title)
+
 		return nil
 	}); err != nil {
 		mlog.Fatal("read data error", err)
@@ -99,4 +110,3 @@ func calcTF_IDF(conf *conf.IrConfig, engine *Engine) {
 	}
 	mlog.Info("calc TF-IDF success")
 }
-
