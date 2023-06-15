@@ -13,6 +13,10 @@ func Query(ctx *wrapper.Context, reqBody interface{}) error {
 	req := reqBody.(*v1_req.EngineRequest)
 	ids := engine.GetEngine().QueryIndexListByToken(req.Token)
 
+	if len(ids) == 0 {
+		
+	}
+
 	title := make([]string, 0, len(ids))
 	urls := make([]string, 0, len(ids))
 	for _, v := range ids {
