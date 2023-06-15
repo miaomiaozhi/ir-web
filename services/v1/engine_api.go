@@ -99,3 +99,4 @@ func calcTF_IDF(conf *conf.IrConfig, engine *Engine) {
 	}
 	mlog.Info("calc TF-IDF success")
 }
+
