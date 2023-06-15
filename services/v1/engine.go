@@ -13,8 +13,15 @@ func Query(ctx *wrapper.Context, reqBody interface{}) error {
 	req := reqBody.(*v1_req.EngineRequest)
 	ids := engine.GetEngine().QueryIndexListByToken(req.Token)
 
+	title := make([]string, 0, len(ids))
+	urls := make([]string, 0, len(ids))
+	for _, v := range ids {
+		title = append(title, engine.GetEngine().Title[v])
+		urls = append(urls, engine.GetEngine().Urls[v])
+	}
 	resp := v1_resp.EngineResponse{
-		Title: []string{"hello"},
+		Title: title,
+		Urls:  urls,
 	}
 	mlog.Info("token is", req.Token)
 	mlog.Info("query ids", ids)
