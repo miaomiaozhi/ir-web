@@ -17,13 +17,13 @@ func (IrisRouter) InitApp(app *iris.Application) {
 		// 注册健康检查路由
 		v1.RegisterHealthRouter(appRouter)
 
-		// 注册User路由 包括普通用户以及审核用户
+		// 注册query路由
 		// v1.RegisterUserRouter(appRouter)
 	}
 	mlog.Info("init app router success")
 }
 
 func loadMiddlerware(app *iris.Application) {
-	// logger.Info("load middle ware for app")
+	mlog.Info("load middle ware for app")
 	//app.Use()
 }
