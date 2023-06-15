@@ -64,3 +64,130 @@
 [INFO][health.go:13] 2023/06/15 11:18:11 health controller wrapper HeartBeat
 [INFO][health.go:10] 2023/06/15 11:18:11 Apiwrapper ok
 [INFO][background.go:27] 2023/06/15 11:18:11 heart beat success
+[INFO][background.go:15] 2023/06/15 16:18:59 health url is http://127.0.0.1:8080/api/v1/health
+[INFO][router.go:13] 2023/06/15 16:18:59 init app
+[INFO][router.go:27] 2023/06/15 16:18:59 load middle ware for app
+[INFO][health.go:17] 2023/06/15 16:18:59 register health router success
+[INFO][router.go:23] 2023/06/15 16:18:59 init app router success
+[INFO][web.go:28] 2023/06/15 16:18:59 app listening port: 8080
+[INFO][router.go:13] 2023/06/15 16:20:00 init app
+[INFO][router.go:27] 2023/06/15 16:20:00 load middle ware for app
+[INFO][health.go:17] 2023/06/15 16:20:00 register health router success
+[INFO][router.go:23] 2023/06/15 16:20:00 init app router success
+[INFO][web.go:28] 2023/06/15 16:20:00 app listening port: 8080
+[INFO][background.go:27] 2023/06/15 16:20:01 heart beat success
+[INFO][background.go:27] 2023/06/15 16:20:11 heart beat success
+[INFO][background.go:27] 2023/06/15 16:20:21 heart beat success
+[INFO][background.go:27] 2023/06/15 16:20:31 heart beat success
+[INFO][background.go:27] 2023/06/15 16:20:41 heart beat success
+[INFO][background.go:27] 2023/06/15 16:20:51 heart beat success
+[INFO][background.go:27] 2023/06/15 16:21:01 heart beat success
+[INFO][background.go:27] 2023/06/15 16:21:11 heart beat success
+[INFO][background.go:27] 2023/06/15 16:21:21 heart beat success
+[INFO][background.go:27] 2023/06/15 16:21:31 heart beat success
+[INFO][background.go:27] 2023/06/15 16:21:41 heart beat success
+[INFO][background.go:27] 2023/06/15 16:21:51 heart beat success
+[INFO][router.go:13] 2023/06/15 16:23:48 init app
+[INFO][router.go:27] 2023/06/15 16:23:48 load middle ware for app
+[INFO][health.go:17] 2023/06/15 16:23:48 register health router success
+[INFO][engine.go:17] 2023/06/15 16:23:48 register Engine router success
+[INFO][router.go:23] 2023/06/15 16:23:48 init app router success
+[INFO][web.go:28] 2023/06/15 16:23:48 app listening port: 8080
+[INFO][background.go:27] 2023/06/15 16:23:49 heart beat success
+[INFO][background.go:27] 2023/06/15 16:23:59 heart beat success
+[INFO][background.go:27] 2023/06/15 16:24:09 heart beat success
+[INFO][background.go:27] 2023/06/15 16:24:19 heart beat success
+[INFO][background.go:27] 2023/06/15 16:24:29 heart beat success
+[INFO][background.go:27] 2023/06/15 16:24:39 heart beat success
+[INFO][background.go:27] 2023/06/15 16:24:49 heart beat success
+[INFO][background.go:27] 2023/06/15 16:24:59 heart beat success
+[INFO][router.go:13] 2023/06/15 16:25:16 init app
+[INFO][router.go:27] 2023/06/15 16:25:16 load middle ware for app
+[INFO][health.go:17] 2023/06/15 16:25:16 register health router success
+[INFO][engine.go:17] 2023/06/15 16:25:16 register Engine router success
+[INFO][router.go:23] 2023/06/15 16:25:16 init app router success
+[INFO][web.go:28] 2023/06/15 16:25:16 app listening port: 8080
+[INFO][background.go:27] 2023/06/15 16:25:17 heart beat success
+[INFO][router.go:13] 2023/06/15 16:25:34 init app
+[INFO][router.go:27] 2023/06/15 16:25:34 load middle ware for app
+[INFO][health.go:17] 2023/06/15 16:25:34 register health router success
+[INFO][engine.go:17] 2023/06/15 16:25:34 register Engine router success
+[INFO][router.go:23] 2023/06/15 16:25:34 init app router success
+[INFO][web.go:28] 2023/06/15 16:25:34 app listening port: 8080
+[INFO][background.go:15] 2023/06/15 16:25:34 health url is http://127.0.0.1:8080/api/v1/health
+[INFO][engine.go:12] 2023/06/15 16:25:37 handle query now
+[ERROR][wrapper.go:18] 2023/06/15 16:25:37 recover :interface conversion: interface {} is nil, not v1.EngineRequest
+[INFO][background.go:27] 2023/06/15 16:25:44 heart beat success
+[INFO][background.go:27] 2023/06/15 16:25:54 heart beat success
+[INFO][background.go:27] 2023/06/15 16:26:04 heart beat success
+[INFO][background.go:15] 2023/06/15 16:34:57 health url is http://127.0.0.1:8080/api/v1/health
+[INFO][router.go:13] 2023/06/15 16:34:57 init app
+[INFO][router.go:27] 2023/06/15 16:34:57 load middle ware for app
+[INFO][health.go:17] 2023/06/15 16:34:57 register health router success
+[INFO][engine.go:17] 2023/06/15 16:34:57 register Engine router success
+[INFO][router.go:23] 2023/06/15 16:34:57 init app router success
+[INFO][web.go:28] 2023/06/15 16:34:57 app listening port: 8080
+[INFO][engine.go:12] 2023/06/15 16:35:01 handle query now
+[INFO][background.go:27] 2023/06/15 16:35:07 heart beat success
+[INFO][background.go:27] 2023/06/15 16:35:17 heart beat success
+[INFO][background.go:27] 2023/06/15 16:35:27 heart beat success
+[INFO][router.go:13] 2023/06/15 16:46:13 init app
+[INFO][router.go:27] 2023/06/15 16:46:13 load middle ware for app
+[INFO][health.go:17] 2023/06/15 16:46:13 register health router success
+[INFO][engine.go:17] 2023/06/15 16:46:13 register Engine router success
+[INFO][router.go:23] 2023/06/15 16:46:13 init app router success
+[INFO][web.go:28] 2023/06/15 16:46:13 app listening port: 8080
+[INFO][background.go:15] 2023/06/15 16:46:13 health url is http://127.0.0.1:8080/api/v1/health
+[INFO][background.go:27] 2023/06/15 16:46:23 heart beat success
+[INFO][background.go:27] 2023/06/15 16:46:33 heart beat success
+[INFO][router.go:13] 2023/06/15 16:48:30 init app
+[INFO][router.go:27] 2023/06/15 16:48:30 load middle ware for app
+[INFO][health.go:17] 2023/06/15 16:48:30 register health router success
+[INFO][engine.go:17] 2023/06/15 16:48:30 register Engine router success
+[INFO][background.go:15] 2023/06/15 16:48:30 health url is http://127.0.0.1:8080/api/v1/health
+[INFO][router.go:23] 2023/06/15 16:48:30 init app router success
+[INFO][web.go:28] 2023/06/15 16:48:30 app listening port: 8080
+[INFO][engine.go:12] 2023/06/15 16:48:33 handle query now
+[INFO][engine.go:26] 2023/06/15 16:48:34 token is hello 你好你好 hello
+[INFO][engine.go:27] 2023/06/15 16:48:34 query ids [1571]
+[INFO][background.go:27] 2023/06/15 16:48:40 heart beat success
+[INFO][background.go:27] 2023/06/15 16:48:50 heart beat success
+[INFO][background.go:27] 2023/06/15 16:49:00 heart beat success
+[INFO][background.go:27] 2023/06/15 16:49:10 heart beat success
+[INFO][background.go:27] 2023/06/15 16:49:20 heart beat success
+[INFO][background.go:27] 2023/06/15 16:49:30 heart beat success
+[INFO][background.go:27] 2023/06/15 16:49:40 heart beat success
+[INFO][background.go:27] 2023/06/15 16:49:50 heart beat success
+[INFO][background.go:27] 2023/06/15 16:50:00 heart beat success
+[INFO][background.go:27] 2023/06/15 16:50:10 heart beat success
+[INFO][background.go:27] 2023/06/15 16:50:20 heart beat success
+[INFO][background.go:27] 2023/06/15 16:50:30 heart beat success
+[INFO][background.go:27] 2023/06/15 16:50:40 heart beat success
+[INFO][router.go:13] 2023/06/15 16:50:59 init app
+[INFO][router.go:27] 2023/06/15 16:50:59 load middle ware for app
+[INFO][background.go:15] 2023/06/15 16:50:59 health url is http://127.0.0.1:8080/api/v1/health
+[INFO][health.go:17] 2023/06/15 16:50:59 register health router success
+[INFO][engine.go:17] 2023/06/15 16:50:59 register Engine router success
+[INFO][router.go:23] 2023/06/15 16:50:59 init app router success
+[INFO][web.go:28] 2023/06/15 16:50:59 app listening port: 8080
+[INFO][engine.go:12] 2023/06/15 16:51:04 handle query now
+[INFO][engine.go:26] 2023/06/15 16:51:04 token is hello 你好你好 hello
+[INFO][engine.go:27] 2023/06/15 16:51:04 query ids [1571]
+[INFO][background.go:27] 2023/06/15 16:51:09 heart beat success
+[INFO][background.go:27] 2023/06/15 16:51:19 heart beat success
+[INFO][router.go:13] 2023/06/15 16:51:34 init app
+[INFO][router.go:27] 2023/06/15 16:51:34 load middle ware for app
+[INFO][health.go:17] 2023/06/15 16:51:34 register health router success
+[INFO][engine.go:17] 2023/06/15 16:51:34 register Engine router success
+[INFO][router.go:23] 2023/06/15 16:51:34 init app router success
+[INFO][web.go:28] 2023/06/15 16:51:34 app listening port: 8080
+[INFO][background.go:15] 2023/06/15 16:51:34 health url is http://127.0.0.1:8080/api/v1/health
+[INFO][engine.go:12] 2023/06/15 16:51:36 handle query now
+[INFO][engine.go:26] 2023/06/15 16:51:37 token is hello 你好你好 hello
+[INFO][engine.go:27] 2023/06/15 16:51:37 query ids [1571]
+[INFO][background.go:27] 2023/06/15 16:51:44 heart beat success
+[INFO][background.go:27] 2023/06/15 16:51:54 heart beat success
+[INFO][background.go:27] 2023/06/15 16:52:04 heart beat success
+[INFO][background.go:27] 2023/06/15 16:52:14 heart beat success
+[INFO][background.go:27] 2023/06/15 16:52:24 heart beat success
+[INFO][background.go:27] 2023/06/15 16:52:34 heart beat success
