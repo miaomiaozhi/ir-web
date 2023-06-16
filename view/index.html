@@ -36,7 +36,18 @@
     <script>
         function search() {
             // 获取搜索框中的关键字
-            var token = document.getElementById("keyword").value;
+            var keyword = document.getElementById("keyword").value;
+
+            // 检查文本框内容长度
+            if (keyword.length === 0) {
+                // 如果长度为0，弹出对话框
+                alert("输入内容不能为空！");
+                return;
+            } else if (keyword.length > 70) {
+                // 如果长度大于70，弹出对话框
+                alert("输入内容长度需要小于70！");
+                return;
+            }
 
             // 创建一个 XMLHttpRequest 对象
             var xhr = new XMLHttpRequest();
@@ -61,25 +72,31 @@
                     var timeDiv = document.getElementById("time");
                     timeDiv.textContent = "搜索花费时间 " + usedTime + " ms";
 
-                    // 构建搜索结果列表
-                    var resultDiv = document.getElementById("result");
-                    resultDiv.innerHTML = "";
-                    for (var i = 0; i < titles.length; i++) {
-                        var title = titles[i];
-                        var url = urls[i];
-                        var link = document.createElement("a");
-                        link.href = url;
-                        link.textContent = title;
-                        var p = document.createElement("p");
-                        p.appendChild(link);
-                        resultDiv.appendChild(p);
+                    // 检查urls数组的长度
+                    if (urls.length === 0) {
+                        // 如果长度为0，弹出对话框
+                        alert("没有找到对应结果！");
+                    } else {
+                        // 如果长度不为0，构建搜索结果列表
+                        var resultDiv = document.getElementById("result");
+                        resultDiv.innerHTML = "";
+                        for (var i = 0; i < titles.length; i++) {
+                            var title = titles[i];
+                            var url = urls[i];
+                            var link = document.createElement("a");
+                            link.href = url;
+                            link.textContent = title;
+                            var p = document.createElement("p");
+                            p.appendChild(link);
+                            resultDiv.appendChild(p);
+                        }
                     }
                 }
             };
 
             // 发送 POST 请求
             var request = {
-                token: token
+                token: keyword
             };
             xhr.send(JSON.stringify(request));
         }
@@ -89,4 +106,3 @@
         }
     </script>
 </body>
-</html>
