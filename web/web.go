@@ -24,12 +24,9 @@ func (*IrWeb) Run(config *conf.IrConfig) {
 	app := newApp()
 	routers.IrisRouter{}.InitApp(app)
 
-	// 注册路由，当访问 /index 路径时，返回 index.html 页面
-	app.Get("/index", func(ctx iris.Context) {
+	// 注册路由，当访问 / 路径时，返回 index.html 页面
+	app.Get("/", func(ctx iris.Context) {
 		ctx.ServeFile("./view/index.html")
-		// ctx.JSON(iris.Map{
-		// 	"status": "ok",
-		// })
 	})
 
 	port := config.GetInt("web.port", 8080)
