@@ -4,17 +4,20 @@ import (
 	"container/heap"
 	"ir-web/conf"
 	"ir-web/pkg"
+	mlog "ir-web/internal/wrapper/mlog"
 	"math"
 )
 
 // 传入查询 token 返回查找结果
 func (e *Engine) QueryIndexListByToken(token string) []int {
+	mlog.Info("handle query index now")
 	words := pkg.SplitWorkByLanguage(token)
 	return e.queryIndexListHelper(token, words)
 }
 
 // 传入查询 token 返回模糊查找结果
 func (e *Engine) FuzzyQueryIndexListByToken(token string) []int {
+	mlog.Info("handle fuzze query index now")
 	prev := pkg.SplitWorkByLanguage(token)
 	words := make([]string, 0, len(prev))
 	words = append(words, prev...)
@@ -61,7 +64,7 @@ func (e *Engine) queryIndexListHelper(token string, words []string) []int {
 
 	heap.Init(&mheap)
 	topK := mheap.GetTopK(10)
-	res := make([]int, 0)
+	res := make([]int, 0, 10)
 	for _, v := range topK {
 		res = append(res, int(v.(*pkg.Info).Key))
 	}
