@@ -31,7 +31,7 @@ func GetMinimalEditDistance(a, b string) int {
 		f[0][i] = i
 	}
 	for i := 1; i <= n; i++ {
-		for j := 1; j <= n; j++ {
+		for j := 1; j <= m; j++ {
 			if a[i] == b[j] {
 				f[i][j] = Min(f[i][j], f[i-1][j-1])
 			} else {
