@@ -34,7 +34,7 @@ func Query(ctx *wrapper.Context, reqBody interface{}) error {
 		Time:  int32(used.Milliseconds()),
 	}
 
-	mlog.Info("used time", int32(used.Microseconds()), "ms")
+	mlog.Info("used time", resp.Time, "ms")
 	mlog.Info("token is", req.Token)
 	mlog.Info("query ids", ids)
 	wrapper.SendApiOKResponse(ctx, resp, "查询成功")
