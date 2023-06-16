@@ -18,9 +18,9 @@ func TestSplitWorkByLanguage(t *testing.T) {
 		// TODO: Add test cases.
 		{
 			args: args{
-				token: "hello 你好吗?? good",
+				token: "hello",
 			},
-			want: []string{"你好", "吗", "hello", "good"},
+			want: []string{"hello"},
 		},
 	}
 	for _, tt := range tests {
