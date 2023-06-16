@@ -5,7 +5,7 @@
     <title>搜索</title>
     <style>
         /* 居中显示搜索框和搜索结果 */
-        #search-box, #result {
+        #search-box, #time, #result {
             width: 50%;
             margin: 0 auto;
             text-align: center;
@@ -18,6 +18,10 @@
         <h1>搜索</h1>
         <input type="text" id="keyword" placeholder="输入关键字">
         <button onclick="search()">搜索</button>
+    </div>
+    
+    <!-- 显示搜索花费时间 -->
+    <div id="time">
     </div>
 
     <!-- 显示搜索结果 -->
@@ -48,6 +52,14 @@
                     var response = JSON.parse(xhr.responseText);
                     var titles = response.Data.Title;
                     var urls = response.Data.Urls;
+                    var usedTime = response.Data.Time;
+
+                    // 打印搜索花费时间
+                    console.log("搜索花费时间 " + usedTime + " ms");
+
+                    // 显示搜索花费时间
+                    var timeDiv = document.getElementById("time");
+                    timeDiv.textContent = "搜索花费时间 " + usedTime + " ms";
 
                     // 构建搜索结果列表
                     var resultDiv = document.getElementById("result");
