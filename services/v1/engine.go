@@ -12,6 +12,7 @@ import (
 func Query(ctx *wrapper.Context, reqBody interface{}) error {
 	mlog.Info("handle query now")
 	req := reqBody.(*v1_req.EngineRequest)
+	mlog.Info("req Token is", req.Token)
 	ids := engine.GetEngine().QueryIndexListByToken(req.Token)
 
 	start := time.Now()
