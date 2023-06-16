@@ -6,6 +6,7 @@ import (
 	engine "ir-web/middleware"
 	v1_req "ir-web/models/protoreq/v1"
 	v1_resp "ir-web/models/protoresp/v1"
+	"time"
 )
 
 func Query(ctx *wrapper.Context, reqBody interface{}) error {
@@ -13,8 +14,9 @@ func Query(ctx *wrapper.Context, reqBody interface{}) error {
 	req := reqBody.(*v1_req.EngineRequest)
 	ids := engine.GetEngine().QueryIndexListByToken(req.Token)
 
+	start := time.Now()
 	if len(ids) == 0 {
-		
+		ids = engine.GetEngine().FuzzyQueryIndexListByToken(req.Token)
 	}
 
 	title := make([]string, 0, len(ids))
@@ -23,10 +25,15 @@ func Query(ctx *wrapper.Context, reqBody interface{}) error {
 		title = append(title, engine.GetEngine().Title[v])
 		urls = append(urls, engine.GetEngine().Urls[v])
 	}
+
+	used := time.Since(start)
 	resp := v1_resp.EngineResponse{
 		Title: title,
 		Urls:  urls,
+		Time:  int32(used.Milliseconds()),
 	}
+
+	mlog.Info("used time", int32(used.Microseconds()), "ms")
 	mlog.Info("token is", req.Token)
 	mlog.Info("query ids", ids)
 	wrapper.SendApiOKResponse(ctx, resp, "查询成功")
