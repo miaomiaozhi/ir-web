@@ -115,7 +115,6 @@ func SplitDocument(doc string) (string, string, string) {
 		} else {
 			content += str + "\n"
 		}
-
 	}
 	return url, title, content
 }
